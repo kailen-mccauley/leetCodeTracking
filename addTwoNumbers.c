@@ -5,6 +5,7 @@
  * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 */
 
+// Helper function to handle adding to the end of the new linked list
 void addNode(struct ListNode** head, int val) {
     struct ListNode* newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
     newNode->val = val;
@@ -33,6 +34,9 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
     struct ListNode *head = NULL;
     int sum = 0;
     int overflow = 0;
+    // Iterate accross both linked list and add the current values
+    // Max overflow we can have is only a 1 since every node has a max value of 9
+    // Keep repeating until we cleared both linked list AND the overflow
     while (curr1 || curr2 || overflow) {
         sum = 0;
         sum += curr1? curr1->val : 0;
